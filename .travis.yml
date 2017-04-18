@@ -2,8 +2,7 @@ language: bash
 sudo: required
 
 before_install:
-- openssl aes-256-cbc -K $encrypted_f121f5d772a2_key -iv $encrypted_f121f5d772a2_iv
-  -in id_rsa.pub.enc -out id_rsa.pub -d
+- openssl aes-256-cbc -K $encrypted_0900be937efe_key -iv $encrypted_0900be937efe_iv -in github_deploy_key.enc -out github_deploy_key -d
 
 
 install:
