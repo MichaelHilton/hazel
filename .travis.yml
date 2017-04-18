@@ -9,5 +9,12 @@ install:
   - export OPAMYES=1 && opam init && eval `opam config env`
   #- opam install bisect ounit
   - opam install js_of_ocaml tyxml deriving ppx_deriving reactiveData ocp-indent camomile
-  
-script: bash .travis-ci.sh
+
+#script:
+#  - make
+
+script: bash -ex .travis-opam.sh && bash -ex push.sh
+
+env:
+  global:
+    -secure:"kLvP55Pxb+gjK5lo0nnmYXYyKyydlNWYy6oZ9ljYTe2sj3847ZrPttagz7Dok7pPVfdPp1NGTLUeBcHYVQbpi1I749zi+MkZJ41JWBg3wP/9F6VB6sbJyrNkWRHHrM0oquNXV/sVJw+4aYaWzc2kmY1t71H7kJiNgqN+yHGuCVo0j0qQnEYvzUaE3gQMTMla6a5PLx/k2tgLjl93x6lv8x/jIrKBGCWwzASO93HLX9QrpoN1Yroy+s4If0kWkkirtv6W/6Io26uKNcwJygWOBc9dopVAsjoG2WW+T+ZieUCX9JQx3mDXIMKe/NMPpntjvY0LyWKXoOizsgVfAbEC5rdOXh2oC41yCQoRmSk9FPTRQKo98viDUKmHNSri/3V9gCgdXWiauIQOSWM9Ot0BlR6GZ2/R8HR9EiGx5qyDhqroUe428WdBpPCovHqwcNBUazFGKRiVWM53N4msbij7qeqbbLCa3rtcAkwSlNI3+LZ8r+ka9/xdvU8kZFG+YLhabAGmCiqVP2VvjX1iTduezdDEvQ2Z+KOjuvvZUcZKSCBoRQe0w7nRabPxXTcJBIEdQ3cglgN4v0BhAjjLLAOKT2BLVndr6+kmgqRHrenMujl5BW1jWAu7VHaE6yWEFNzkxu5+jklCwb57VuOGYZzuZ9UjaXl+UJoQAeQfAA4ufwE="
