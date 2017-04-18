@@ -1,9 +1,13 @@
 language: bash
 sudo: required
 
-before_install:
-- openssl aes-256-cbc -K $encrypted_0900be937efe_key -iv $encrypted_0900be937efe_iv -in github_deploy_key.enc -out github_deploy_key -d
+#before_install:
+#- openssl aes-256-cbc -K $encrypted_0900be937efe_key -iv $encrypted_0900be937efe_iv -in github_deploy_key.enc -out github_deploy_key -d
 
+env:
+  global:
+  - ENCRYPTION_LABEL: "0900be937efe"
+  - COMMIT_AUTHOR_EMAIL: "michael.hilton@gmail.com"
 
 install:
   - sudo add-apt-repository -y ppa:avsm/ocaml42+opam12
