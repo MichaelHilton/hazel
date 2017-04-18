@@ -9,8 +9,5 @@ install:
   - export OPAMYES=1 && opam init && eval `opam config env`
   #- opam install bisect ounit
   - opam install js_of_ocaml tyxml deriving ppx_deriving reactiveData ocp-indent camomile
-
-#script:
-#  - make
-
-script: bash -ex .travis-opam.sh
+  
+script: bash .travis-ci.sh
