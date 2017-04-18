@@ -16,8 +16,9 @@ commit_website_files() {
 
 upload_files() {
   #git remote add origin-pages https://${GH_TOKEN}@github.com/MVSE-outreach/resources.git > /dev/null 2>&1
-   git push -f -q https://MichaelHilton:$GITHUB_API_KEY@github.com/MichaelHilton/hazelgrove.github.io.git  &2>/dev/null
-   
+   git push -f -q https://MichaelHilton:$GITHUB_API_KEY@github.com/MichaelHilton/hazelgrove.github.io.git master  &2>/dev/null
+  # git push -f -q https://cirosantilli:$GITHUB_API_KEY@github.com/cirosantilli/gnuplot-examples-gh-pages gh-pages &2>/dev/null
+
   #git push --quiet
 }
 
