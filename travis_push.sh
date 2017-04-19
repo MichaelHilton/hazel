@@ -18,19 +18,19 @@ commit_website_files() {
 upload_files() {
   
   # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
-  ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
-  ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
-  ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
-  ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+ # ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+ # ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+ #ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+  #ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
   #pwd
   #cd ..
   #cd ..
   #pwd
   #ls
-  openssl aes-256-cbc -K encrypted_0900be937efe_key -iv encrypted_0900be937efe_iv -in ../../pages-deploy-key.enc -out pages_deploy_key -d
-  chmod 600 pages_deploy_key
+  #openssl aes-256-cbc -K encrypted_0900be937efe_key -iv encrypted_0900be937efe_iv -in ../../pages-deploy-key.enc -out pages_deploy_key -d
+  chmod 600 pages-deploy-key
   eval `ssh-agent -s`
-  ssh-add pages_deploy_key
+  ssh-add pages-deploy-key
 
   # Now that we're all set up, we can push.
   #git push $SSH_REPO $TARGET_BRANCH
