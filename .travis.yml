@@ -31,7 +31,3 @@ script:
   - git filter-branch -f --subdirectory-filter _site/ # Again, replace _site/
   # Obviously, replace with your repo's SSH URL and the appropriate branch
   - git push -f YOUR_REPOS_SSH_URL master:master
-  
-branches:
-  only:
-    - source
