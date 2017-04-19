@@ -23,6 +23,10 @@ upload_files() {
   ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
   ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
   pwd
+  cd ..
+  cd ..
+  pwd
+  ls
   openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../../pages_deploy_key.enc -out pages_deploy_key -d
   chmod 600 pages_deploy_key
   eval `ssh-agent -s`
