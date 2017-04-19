@@ -5,12 +5,13 @@ sudo: required
 before_install:
   - openssl aes-256-cbc -K $encrypted_0900be937efe_key -iv $encrypted_0900be937efe_iv -in pages-deploy-key.enc -out pages-deploy-key -d
 
-install:
-  - sudo add-apt-repository -y ppa:avsm/ocaml42+opam12
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq ocaml opam
-  - export OPAMYES=1 && opam init && eval `opam config env`
-  #- opam install bisect ounit
-  - opam install js_of_ocaml tyxml deriving ppx_deriving reactiveData ocp-indent camomile
+#install:
+#  - sudo add-apt-repository -y ppa:avsm/ocaml42+opam12
+#  - sudo apt-get update -qq
+#  - sudo apt-get install -qq ocaml opam
+#  - export OPAMYES=1 && opam init && eval `opam config env`
+#  #- opam install bisect ounit
+#  - opam install js_of_ocaml tyxml deriving ppx_deriving reactiveData ocp-indent camomile
   
-script: bash .travis-ci.sh && bash -ex travis_push.sh
+#script: bash .travis-ci.sh && bash -ex travis_push.sh\
+script: bash -ex travis_push.sh
