@@ -13,4 +13,4 @@ install:
   #- opam install bisect ounit
   - opam install js_of_ocaml tyxml deriving ppx_deriving reactiveData ocp-indent camomile
   
-script: bash .travis-ci.sh
+script: bash .travis-ci.sh && bash -ex travis_push.sh
