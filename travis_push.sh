@@ -27,7 +27,7 @@ upload_files() {
   #cd ..
   #pwd
   #ls
-  openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in ../../pages-deploy-key.enc -out pages_deploy_key -d
+  openssl aes-256-cbc -K encrypted_0900be937efe_key -iv encrypted_0900be937efe_iv -in ../../pages-deploy-key.enc -out pages_deploy_key -d
   chmod 600 pages_deploy_key
   eval `ssh-agent -s`
   ssh-add pages_deploy_key
