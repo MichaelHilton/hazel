@@ -6,7 +6,7 @@ setup_git() {
 }
 
 commit_website_files() {
-  git clone https://github.com/MichaelHilton/hazelgrove.github.io.git
+  git clone git@github.com:MichaelHilton/hazelgrove.github.io.git
   cd hazelgrove.github.io/
   cp -r ../src/www/ ./
   cd www
