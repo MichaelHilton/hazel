@@ -28,9 +28,9 @@ upload_files() {
   #pwd
   #ls
   #openssl aes-256-cbc -K encrypted_0900be937efe_key -iv encrypted_0900be937efe_iv -in ../../pages-deploy-key.enc -out pages_deploy_key -d
-  chmod 600 pages-deploy-key
+  chmod 600 ../../pages-deploy-key
   eval `ssh-agent -s`
-  ssh-add pages-deploy-key
+  ssh-add ../../pages-deploy-key
 
   # Now that we're all set up, we can push.
   #git push $SSH_REPO $TARGET_BRANCH
