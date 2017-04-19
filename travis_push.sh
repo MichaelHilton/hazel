@@ -10,6 +10,7 @@ commit_website_files() {
   cd hazelgrove.github.io/
   cp -r ../src/www/ ./
   cd www
+  touch test.txt
   git add .
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
 }
