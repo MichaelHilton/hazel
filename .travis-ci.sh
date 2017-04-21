@@ -9,6 +9,11 @@
 
 echo "build here"
 
+echo "Compiling new static content"
+cd ./src
+./build.sh
+
+
 echo "chmod"
 chmod 600 deploy-key
 echo "eval"
