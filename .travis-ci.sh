@@ -18,7 +18,9 @@ git checkout -B gh-pages || exit 1
 echo "Removing old static content"  
 git rm -rf . || exit 1
 
-echo "Copying newly generated static content"  
+echo "Copying newly generated static content" 
+mkdir ./www
+ls -la 
 cp $TEMP_DIRECTORY/* . || exit 1  
 cp $TEMP_DIRECTORY/.gitignore . || exit 1
 
