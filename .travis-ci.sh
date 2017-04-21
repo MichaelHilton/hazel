@@ -15,15 +15,17 @@ cd ./src
 touch ./www/testChange.html
 
 echo "chmod"
-chmod 600 deploy-key
+chmod 600 ../deploy-key
 echo "eval"
 eval `ssh-agent -s`
 echo "ssh"
-ssh-add deploy-key
+ssh-add ../deploy-key
 echo "git conf"
 git config user.name "Automatic Publish"
 git config user.email "michael.hilton@gmail.com"
-echo "move to www"
+echo "git clone"
+git clone git@github.com:MichaelHilton/hazel.git
+echo "move to hazel"
 cd hazel
 echo "switch to gh-pages"
 git checkout gh-pages
