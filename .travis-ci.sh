@@ -9,12 +9,16 @@
 
 echo "build here"
 
-
+echo "chmod"
 chmod 600 deploy-key
+echo "eval"
 eval `ssh-agent -s`
+echo "ssh"
 ssh-add deploy-key
+echo "git conf"
 git config user.name "Automatic Publish"
 git config user.email "djw8605@gmail.com"
+echo "git remote add"
 git remote add gh-token "git@github.com:MichaelHilton/hazel.git";
 echo "Pushing to github"
 git push gh-token gh-pages
