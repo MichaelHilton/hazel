@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-eval "$(ssh-agent -s)" #start the ssh agent
-echo "$DEPLOY_KEY" > deploy_key.pem
-chmod 600 deploy_key.pem # this key should have push access
-ssh-add deploy_key.pem
-git remote add deploy git@github.com:MichaelHilton/hazel.git
-git push deploy gh-pages
+# eval "$(ssh-agent -s)" #start the ssh agent
+# echo "$DEPLOY_KEY" > deploy_key.pem
+# chmod 600 deploy_key.pem # this key should have push access
+# ssh-add deploy_key.pem
+# git remote add deploy git@github.com:MichaelHilton/hazel.git
+# git push deploy gh-pages
 
+echo "build here"
 # #!/bin/bash
 # echo "Starting deployment"
 # echo "Target: gh-pages branch"

@@ -1,17 +1,42 @@
 language: bash
-
 sudo: required
 
-env:
-  global:
-    - secure: "Qtw8DvBGB6vKlYu88xkk8dDqk8SbNWdI1tzFuwqXlI88ZN2yei3rrk/LOL3ZaFUjf86csnvN9OieZaRNfqVFqLGEjRfCDLIvGrFP4Bi/B6dkS1mvz1BcOI36U0V5I8uKXGu+WTrft3DpfcOqCt/faJ2aomR35dknXrWRZSZowFquTgPRsXsyJXTA5nBxCyeFbqKzkqqLXPeLH5XOoJm4gE5kxStThR3BMhH2PE2EPQuiIPZQhTld4m1UiPZ1eckatCe9VL7g569lD3grt4bo/tqiwwnuNP/wqJ7McwDsEtjqTl2G75ib8ZcsRFSo8aACf7c0NL5KCKArF8ySDTT8LNbZL8tVX+WzJbb2E57COmoUMuz4ffSJbJLkePekzN534p4imGR9Dm+XoNduvvUgiFeCMBR6/9czgxQ06ckRDJaXDDXRTkWoxC0coHTO/kqTdyAQBOVVu7LmkInuuSGZ0+nJ+vvKfLzUMIcC076Vq/KLxlUnbrxM0GPmfAe3Kq1IbbqbQGX0W52ikkLQk4QAVMfrBCExnrySotwQ7+pO+Q2rvBwGOy9ncGTKqQv7WmIgVMkTjJA6hQsJywNhuawR9fyqFdyxihp2LJuUYKgM6z46r3O3f4dZo5WULYOUpe0GuD3xEaPoGNqntzjgCZnHPnnUxVxqrNLBlxsbhE1bGW4="
+before_install:
+ - openssl aes-256-cbc -K $encrypted_0900be937efe_key -iv $encrypted_0900be937efe_iv
+   -in deploy-key.enc -out deploy-key -d
 
-#install:
-  #- sudo add-apt-repository -y ppa:avsm/ocaml42+opam12
-  #- sudo apt-get update -qq
-  #- sudo apt-get install -qq ocaml opam
-  #- export OPAMYES=1 && opam init && eval `opam config env`
-  ##- opam install bisect ounit
-  #- opam install js_of_ocaml tyxml deriving ppx_deriving reactiveData ocp-indent camomile
-  
-script: bash .travis-ci.sh
+
+#env:
+#   global:
+#   - secure: Qtw8DvBGB6vKlYu88xkk8dDqk8SbNWdI1tzFuwqXlI88ZN2yei3rrk/LOL3ZaFUjf86csnvN9OieZaRNfqVFqLGEjRfCDLIvGrFP4Bi/B6dkS1mvz1BcOI36U0V5I8uKXGu+WTrft3DpfcOqCt/faJ2aomR35dknXrWRZSZowFquTgPRsXsyJXTA5nBxCyeFbqKzkqqLXPeLH5XOoJm4gE5kxStThR3BMhH2PE2EPQuiIPZQhTld4m1UiPZ1eckatCe9VL7g569lD3grt4bo/tqiwwnuNP/wqJ7McwDsEtjqTl2G75ib8ZcsRFSo8aACf7c0NL5KCKArF8ySDTT8LNbZL8tVX+WzJbb2E57COmoUMuz4ffSJbJLkePekzN534p4imGR9Dm+XoNduvvUgiFeCMBR6/9czgxQ06ckRDJaXDDXRTkWoxC0coHTO/kqTdyAQBOVVu7LmkInuuSGZ0+nJ+vvKfLzUMIcC076Vq/KLxlUnbrxM0GPmfAe3Kq1IbbqbQGX0W52ikkLQk4QAVMfrBCExnrySotwQ7+pO+Q2rvBwGOy9ncGTKqQv7WmIgVMkTjJA6hQsJywNhuawR9fyqFdyxihp2LJuUYKgM6z46r3O3f4dZo5WULYOUpe0GuD3xEaPoGNqntzjgCZnHPnnUxVxqrNLBlxsbhE1bGW4=
+
+script:
+  - bash .travis-ci.sh
+
+
+# deploy:
+#  provider: pages
+#  skip_cleanup: true
+#  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+#  local_dir: site
+#  on:
+#    branch: master
+
+
+script:
+  -bash .travis-ci.sh
+  - chmod 600 deploy-key
+  - eval `ssh-agent -s`
+  - ssh-add deploy-key
+  - git config user.name "Automatic Publish"
+  - git config user.email "djw8605@gmail.com"
+  - git remote add gh-token "git@github.com:MichaelHilton/hazel.git";
+  #- git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
+  - echo "Pushing to github"
+  #- git checkout -b gh-pages
+  - git push gh-token gh-pages
+
+  #- if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+  # then echo "Pushing to github";
+  #  PYTHONPATH=src/ mkdocs gh-deploy -v --clean --remote-name gh-token;
+     #git push gh-token gh-pages; fi;
