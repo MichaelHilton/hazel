@@ -10,9 +10,9 @@
 echo "build here"
 
 echo "Compiling new static content"
-cd ./src
-./build.sh
-
+#cd ./src
+#./build.sh
+touch ./src/www/testChange.html
 
 echo "chmod"
 chmod 600 deploy-key
