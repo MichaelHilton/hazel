@@ -19,7 +19,7 @@ echo "Removing old static content"
 git rm -rf . || exit 1
 
 echo "Copying newly generated static content"  
-cp -r $TEMP_DIRECTORY/* . || exit 1  
+cp $TEMP_DIRECTORY/* . || exit 1  
 cp $TEMP_DIRECTORY/.gitignore . || exit 1
 
 echo "Pushing new content to $ORIGIN_URL"  
