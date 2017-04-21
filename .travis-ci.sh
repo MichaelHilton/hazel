@@ -25,6 +25,8 @@ git config user.name "Automatic Publish"
 git config user.email "djw8605@gmail.com"
 echo "git remote add"
 git remote add gh-token "git@github.com:MichaelHilton/hazel.git";
+echo "git add"
+git add ./src/www/*
 echo "commit"
 git commit -m 'initial commit'
 echo "Pushing to github"
