@@ -7,12 +7,4 @@ before_install:
    -in deploy-key.enc -out deploy-key -d
 
 script:
-  -bash .travis-ci.sh
-  - chmod 600 deploy-key
-  - eval `ssh-agent -s`
-  - ssh-add deploy-key
-  - git config user.name "Automatic Publish"
-  - git config user.email "djw8605@gmail.com"
-  - git remote add gh-token "git@github.com:MichaelHilton/hazel.git";
-  - echo "Pushing to github"
- - git push gh-token gh-pages
+  - bash .travis-ci.sh
