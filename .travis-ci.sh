@@ -8,6 +8,17 @@
 # git push deploy gh-pages
 
 echo "build here"
+
+
+chmod 600 deploy-key
+eval `ssh-agent -s`
+ssh-add deploy-key
+git config user.name "Automatic Publish"
+git config user.email "djw8605@gmail.com"
+git remote add gh-token "git@github.com:MichaelHilton/hazel.git";
+echo "Pushing to github"
+git push gh-token gh-pages
+
 # #!/bin/bash
 # echo "Starting deployment"
 # echo "Target: gh-pages branch"
