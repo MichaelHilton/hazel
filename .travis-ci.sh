@@ -11,9 +11,9 @@ echo "build here"
 
 echo "Compiling new static content"
 cd ./src
-#./build.sh
-touch ./www/testChange.html
-
+./build.sh
+# touch ./www/testChange.html
+#
 echo "chmod"
 chmod 600 ../deploy-key
 echo "eval"
