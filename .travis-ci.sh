@@ -10,9 +10,9 @@
 echo "build here"
 
 echo "Compiling new static content"
-#cd ./src
+cd ./src
 #./build.sh
-touch ./src/www/testChange.html
+touch ./www/testChange.html
 
 echo "chmod"
 chmod 600 deploy-key
@@ -22,15 +22,29 @@ echo "ssh"
 ssh-add deploy-key
 echo "git conf"
 git config user.name "Automatic Publish"
-git config user.email "djw8605@gmail.com"
-echo "git remote add"
-git remote add gh-token "git@github.com:MichaelHilton/hazel.git";
+git config user.email "michael.hilton@gmail.com"
+echo "move to www"
+cd hazel
+echo "switch to gh-pages"
+git checkout gh-pages
+echo "get latest files"
+cp -r ../www/* .
 echo "git add"
-git add ./src/www/*
+git add .
 echo "commit"
-git commit -m 'initial commit'
-echo "Pushing to github"
-git push gh-token gh-pages
+git commit -m "Travis Build"
+echo "push"
+git push origin gh-pages
+
+# echo "git remote add"
+
+# git remote add gh-token "git@github.com:MichaelHilton/hazel.git";
+# echo "git add"
+# git add ./src/www/*
+# echo "commit"
+# git commit -m 'initial commit'
+# echo "Pushing to github"
+# git push gh-token gh-pages
 
 # #!/bin/bash
 # echo "Starting deployment"
