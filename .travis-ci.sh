@@ -20,11 +20,14 @@ echo "eval"
 eval `ssh-agent -s`
 echo "ssh"
 ssh-add ../deploy-key
-echo "git conf"
-git config user.name "Automatic Publish"
-git config user.email "michael.hilton@gmail.com"
+
+# git config user.name "Automatic Publish"
+# git config user.email "michael.hilton@gmail.com"
 echo "git clone"
 git clone git@github.com:MichaelHilton/hazel.git
+echo "git conf"
+git config --global user.email "travis@travis-ci.org"
+git config --global user.name "Push From Travis"
 echo "move to hazel"
 cd hazel
 echo "switch to gh-pages"
